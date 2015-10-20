@@ -1,21 +1,22 @@
-# MODIFIY THESE THREE SETTINGS
-# will also be the Name on the dokku host
+# MODIFIY THESE SIX SETTINGS
+
+# Setting 1: will also be the Name on the dokku host
 PROJECT_NAME=wptest
 
-# dokku.mycompany.com or whatever
-DOKKU_HOST=d
+# Setting 2: dokku.mycompany.com or whatever
+DOKKU_HOST=studionorthnh.com
 
-# ussually it's dokku
+# Setting 3: usually it's dokku
 DOKKU_USER=dokku
 
-# in case you have want to push something else than master
+# Setting 4: in case you have want to push something else than master
 BRANCH=master
 
-# the name of the local git remote 
-GIT_TARGET=live
+# Setting 5: the name of the local git remote 
+GIT_TARGET=wptest.stephica.com
 
-# requires the domains plugins and sets the domain
-VHOST=wptest.dokku.dudagroup.com
+# Setting 6: requires the domains plugins and sets the domain
+VHOST=wptest.stephica.com 
 
 # You dont have to modify anything below this line
 DOKKU_CMD=ssh $(DOKKU_USER)@$(DOKKU_HOST)
@@ -28,12 +29,17 @@ download_wordpress:
 	mv web/wordpress/* web
 	rm -rf web/wordpress
 	rm latest.zip
+	echo "Done Downloading Wordpress...."
+
 
 configure_wordpress:
+	echo "Configuring Wordpress...."
 	cd web;../tools/create_wp_config.sh
 
 configure_domains:
-	$(DOKKU_CMD) domains:set $(PROJECT_NAME) $(VHOST)
+	echo "Configuring Domains ...."
+	echo $(DOKKU_CMD) domains:add $(PROJECT_NAME) $(VHOST)
+	$(DOKKU_CMD) domains:add $(PROJECT_NAME) $(VHOST)
 
 setup_git:
 	echo "Setting up git remotes...."
@@ -68,8 +74,9 @@ backup:
 
 clean:
 	rm -rf web
-	git remote remove $(GIT_TARGET)
-	$(DOKKU_CMD) volume:remove $(PROJECT_NAME) /app/web/wp-content
-	$(DOKKU_CMD) mariadb:delete $(PROJECT_NAME)
-	$(DOKKU_CMD) undeploy $(PROJECT_NAME)
+	$(DOKKU_CMD) domains:remove $(PROJECT_NAME) $(VHOST)
+	$(DOKKU_CMD) volume:remove $(PROJECT_NAME) /app/web/wp-content || true 
+	$(DOKKU_CMD) mariadb:destroy $(PROJECT_NAME) || true 
+	$(DOKKU_CMD) undeploy $(PROJECT_NAME) || true 
+	git remote remove $(GIT_TARGET) || true 
 	
