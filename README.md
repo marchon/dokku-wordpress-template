@@ -6,10 +6,14 @@ Wordpress can be quite a .... hassle to set up on Dokku. This template makes is 
 
 Requirements:
 - dokku (latest)
-- https://github.com/wmluke/dokku-domains-plugin
-- https://github.com/ohardy/dokku-mariadb
-- https://github.com/ohardy/dokku-volume
+- (depricated) https://github.com/wmluke/dokku-domains-plugin (depricated) 
+- https://github.com/marchon/dokku-mariadb
+- https://github.com/marchon/dokku-volume
 
+```
+    dokku plugin:install  https://github.com/marchon/dokku-mariadb.git
+    dokku plugin:install  https://github.com/marchon/dokku-volume.git
+```
 
 Extract the files into a new folder, edit the variables on to of the Makefile and call ```make install```
 
