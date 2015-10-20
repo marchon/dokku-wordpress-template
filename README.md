@@ -5,7 +5,7 @@ Wordpress can be quite a .... hassle to set up on Dokku. This template makes is 
 
 
 Requirements:
-- dokku (latest)
+- dokku (latest: 0.4.1 as of last update)
 - (depricated) https://github.com/wmluke/dokku-domains-plugin (depricated) 
 - https://github.com/marchon/dokku-mariadb
 - https://github.com/marchon/dokku-volume
