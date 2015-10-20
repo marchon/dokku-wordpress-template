@@ -45,18 +45,29 @@ root@studionorthnh:~# dokku plugin
 ```
 
 - Extract the files into a new folder 
-- edit the three variables on top of the Makefile 
+- edit the six variables on top of the Makefile 
 - call ```make install```
 
 ```
-# will also be the Name on the dokku host
+# MODIFIY THESE SIX SETTINGS
+
+# Setting 1: will also be the Name on the dokku host
 PROJECT_NAME=wptest
 
-# dokku.mycompany.com or whatever
+# Setting 2: dokku.mycompany.com or whatever
 DOKKU_HOST=d
 
-# ussually it's dokku
+# Setting 3: usually it's dokku
 DOKKU_USER=dokku
+
+# Setting 4: in case you have want to push something else than master
+BRANCH=master
+
+# Setting 5: the name of the local git remote
+GIT_TARGET=live
+
+# Setting 6: requires the domains plugins and sets the domain
+VHOST=wptest.dokku.dudagroup.com
 ```
 
 
