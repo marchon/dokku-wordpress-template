@@ -21,6 +21,11 @@ VHOST=wptest.stephica.com
 # You dont have to modify anything below this line
 DOKKU_CMD=ssh $(DOKKU_USER)@$(DOKKU_HOST)
 
+
+warning: 
+	@echo "ERROR: You Probably Want to type > make install "
+
+
 download_wordpress:
 	echo "Downloading Wordpress...."
 	mkdir web
@@ -38,8 +43,8 @@ configure_wordpress:
 
 configure_domains:
 	echo "Configuring Domains ...."
-	echo $(DOKKU_CMD) domains:set $(PROJECT_NAME) $(VHOST)
-	$(DOKKU_CMD) domains:set $(PROJECT_NAME) $(VHOST)
+	echo $(DOKKU_CMD) domains:add $(PROJECT_NAME) $(VHOST)
+	$(DOKKU_CMD) domains:add $(PROJECT_NAME) $(VHOST)
 
 setup_git:
 	echo "Setting up git remotes...."
@@ -74,6 +79,7 @@ backup:
 
 clean:
 	rm -rf web
+	$(DOKKU_CMD) domains:remove $(PROJECT_NAME) $(VHOST)
 	$(DOKKU_CMD) volume:remove $(PROJECT_NAME) /app/web/wp-content || true 
 	$(DOKKU_CMD) mariadb:destroy $(PROJECT_NAME) || true 
 	$(DOKKU_CMD) undeploy $(PROJECT_NAME) || true 
