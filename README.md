@@ -19,7 +19,7 @@ Extract the files into a new folder, edit the variables on to of the Makefile an
 
 E.g.:
 ```
-git clone https://github.com/dudagroup/dokku-wordpress-template.git myproject
+git clone https://github.com/marchon/dokku-wordpress-template.git myproject
 cd myproject
 rm -rf .git # except if your contributing to this :-)
 vi Makefile
