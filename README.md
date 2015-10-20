@@ -44,7 +44,21 @@ root@studionorthnh:~# dokku plugin
     dokku plugin:install  https://github.com/marchon/dokku-volume.git
 ```
 
-Extract the files into a new folder, edit the variables on to of the Makefile and call ```make install```
+- Extract the files into a new folder 
+- edit the three variables on top of the Makefile 
+- call ```make install```
+
+```
+# will also be the Name on the dokku host
+PROJECT_NAME=wptest
+
+# dokku.mycompany.com or whatever
+DOKKU_HOST=d
+
+# ussually it's dokku
+DOKKU_USER=dokku
+```
+
 
 E.g.:
 ```
