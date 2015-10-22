@@ -38,27 +38,27 @@ download_wordpress:
 
 
 configure_wordpress:
-	echo "Configuring Wordpress...."
+	echo "************************************* Configuring Wordpress...."
 	cd web;../tools/create_wp_config.sh
 
 configure_domains:
-	echo "Configuring Domains ...."
+	echo "************************************* Configuring Domains ...."
 	echo $(DOKKU_CMD) domains:add $(PROJECT_NAME) $(VHOST)
 	$(DOKKU_CMD) domains:add $(PROJECT_NAME) $(VHOST)
 
 setup_git:
-	echo "Setting up git remotes...."
+	echo "************************************* Setting up git remotes...."
 	git init
 	git remote add $(GIT_TARGET) $(DOKKU_USER)@$(DOKKU_HOST):$(PROJECT_NAME)
 	git add .
 	git commit -am "Setup of Project: $(PROJECT_NAME)"
 
 setup_dokku_volume:
-	echo "Adding docker volume"
+	echo "************************************ Adding docker volume"
 	$(DOKKU_CMD) volume:add $(PROJECT_NAME) /app/web/wp-content
 
 setup_mariadb:
-	echo "Creating DB"
+	echo "************************************ Creating DB"
 	$(DOKKU_CMD) mariadb:create $(PROJECT_NAME)
 
 install: download_wordpress configure_wordpress setup_git deploy setup_dokku_volume setup_mariadb configure_domains
