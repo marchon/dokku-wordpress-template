@@ -82,6 +82,6 @@ clean:
 	$(DOKKU_CMD) domains:remove $(PROJECT_NAME) $(VHOST)
 	$(DOKKU_CMD) volume:remove $(PROJECT_NAME) /app/web/wp-content || true 
 	$(DOKKU_CMD) mariadb:destroy $(PROJECT_NAME) || true 
-	$(DOKKU_CMD) undeploy $(PROJECT_NAME) || true 
+	$(DOKKU_CMD) apps:destroy $(PROJECT_NAME) || true 
 	git remote remove $(GIT_TARGET) || true 
 	
