@@ -78,7 +78,7 @@ backup:
 	$(DOKKU_CMD) volume:dump $(PROJECT_NAME) /app/web/wp-content > backup_$(PROJECT_NAME)_wp_content.tar.gz
 
 clean:
-	rm -rf || true 
+	rm -rf web || true 
 	$(DOKKU_CMD) domains:remove $(PROJECT_NAME) $(VHOST) || true 
 	$(DOKKU_CMD) volume:remove $(PROJECT_NAME) /app/web/wp-content || true 
 	$(DOKKU_CMD) mariadb:destroy $(PROJECT_NAME) || true 
