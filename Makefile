@@ -23,7 +23,9 @@ DOKKU_CMD=ssh $(DOKKU_USER)@$(DOKKU_HOST)
 
 
 warning: 
-	@echo "ERROR: You Probably Want to type > make install "
+	@echo "ERROR: Have You READ the Directions and made the appropriate edits to the makefile?" 
+        @echo "ERROR: You NEED to make those changes and then "
+	@echo "ERROR: You Want to type  'make install' " 
 
 
 download_wordpress:
