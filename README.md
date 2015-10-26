@@ -43,6 +43,7 @@ root@studionorthnh:~# dokku plugin
 ```
     dokku plugin:install  https://github.com/marchon/dokku-mariadb.git
     dokku plugin:install  https://github.com/marchon/dokku-volume.git
+    dokku plugin:install https://github.com/marchon/dokku-docker-auto-volumes.git 
 ```
 
 - Extract the files into a new folder 
