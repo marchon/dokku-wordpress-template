@@ -3,12 +3,13 @@ dokku-wordpress-template
 
 Wordpress can be quite a .... hassle to set up on Dokku. This template makes is considerably easier.
 
-
 Requirements:
 - dokku (latest: 0.4.1 as of last update)
 - (depricated) https://github.com/wmluke/dokku-domains-plugin (depricated) 
 - https://github.com/marchon/dokku-mariadb
-- https://github.com/marchon/dokku-volume
+- (does not work with v.4.1) https://github.com/marchon/dokku-volume (does not work with v.4.1) 
+- ( testing ) https://github.com/marchon/dokku-docker-auto-volumes.git
+
 
 to check installed plugins 
 ```
@@ -28,7 +29,7 @@ root@studionorthnh:~# dokku plugin
   enter                0.4.0 enabled    dokku core enter plugin
   git                  0.4.0 enabled    dokku core git plugin
   logs                 0.4.0 enabled    dokku core logs plugin
-  mariadb              1.0.0 enabled    dokku mariadb service plugin
+> mariadb              1.0.0 enabled    dokku mariadb service plugin
   nginx-vhosts         0.4.0 enabled    dokku core nginx-vhosts plugin
   plugin               0.4.0 enabled    dokku core plugin plugin
   ps                   0.4.0 enabled    dokku core ps plugin
