@@ -7,7 +7,7 @@ Requirements:
 - dokku (latest: 0.4.1 as of last update)
 - (depricated) https://github.com/wmluke/dokku-domains-plugin (depricated) 
 - https://github.com/marchon/dokku-mariadb
-- (does not work with v.4.1) https://github.com/marchon/dokku-volume (does not work with v.4.1) 
+- https://github.com/marchon/dokku-volume 
 - ( testing ) https://github.com/marchon/dokku-docker-auto-volumes.git
 
 
