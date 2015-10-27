@@ -1,7 +1,7 @@
 # MODIFIY THESE SIX SETTINGS
 
 # Setting 1: will also be the Name on the dokku host
-PROJECT_NAME=wptest
+PROJECT_NAME=wpinfo
 
 # Setting 2: dokku.mycompany.com or whatever
 DOKKU_HOST=studionorthnh.com
