@@ -37,13 +37,15 @@ download_wordpress:
 
 
 configure_wordpress:
-	echo "************************************* Configuring Wordpress...."
+	echo "************************************* Configuring Wordpress...." || true 
 	cd web;../tools/create_wp_config.sh
+	echo "************************************* Done Configuring Wordpress...." || true 
 
 configure_domains:
-	echo "************************************* Configuring Domains ...."
+	echo "************************************* Configuring Domains ...." || true 
 	echo $(DOKKU_CMD) domains:add $(PROJECT_NAME) $(VHOST)
 	$(DOKKU_CMD) domains:add $(PROJECT_NAME) $(VHOST)
+	echo "************************************* Done Configuring Domains ...." || true 
 
 setup_git:
 	echo "************************************* Setting up git remotes...."
