@@ -26,14 +26,14 @@ warning:
 	@echo "ERROR: Have You READ the Directions and made the appropriate edits to the makefile? Do that and then 'make install' " 
 
 download_wordpress:
-	echo "Downloading Wordpress...."
+	@echo "Downloading Wordpress...."
 	mkdir web
 	curl -o latest.zip -LOk https://wordpress.org/latest.zip
 	unzip -q latest.zip -d web
 	mv web/wordpress/* web
 	rm -rf web/wordpress
 	rm latest.zip
-	echo "Done Downloading Wordpress...."
+	@echo "Done Downloading Wordpress...."
 
 
 configure_wordpress:
@@ -57,10 +57,12 @@ setup_git:
 setup_dokku_volume:
 	echo "************************************ Adding docker volume"
 	$(DOKKU_CMD) volume:add $(PROJECT_NAME) /app/web/wp-content
+	echo "************************************ Done Adding docker volume"
 
 setup_mariadb:
 	echo "************************************ Creating DB"
 	$(DOKKU_CMD) mariadb:create $(PROJECT_NAME)
+	echo "************************************ Done Creating DB"
 
 install: download_wordpress configure_wordpress setup_git deploy setup_dokku_volume setup_mariadb configure_domains
 	date > last_install.txt
